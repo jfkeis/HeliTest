@@ -445,6 +445,11 @@ MonoBehaviour:
   Speed: 0
   AngularSpeed: 0
   RotForce: 100
+  xAngle: 0
+  yAngle: 0
+  zAngle: 0
+  maxAngle: 30
+  correctionForce: 10
   CenterOfMass: {x: 0, y: -4, z: 0}
 --- !u!4 &1271341713
 Transform:
@@ -482,7 +487,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270922933}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.69, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1271341719}
@@ -496,8 +501,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270922935}
-  m_LocalRotation: {x: 0.0000018099951, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0000015352334, y: 1.3855485, z: -0.8405489}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 963194228}
