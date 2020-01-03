@@ -7,17 +7,17 @@ public class SimpleHeliController : MonoBehaviour
     [Header("Components")]
     public Rigidbody _body;
     public float ForwardForce = 10000f;
-    public float TurnForce = 1000f;
+    public float TurnForce = 5000f;
     public float LiftForce = 10000f;
     public float MaxSpeed = 1000f;
-    public float Speed;
-    public float AngularSpeed;
-    public float RotForce = 100f;
+    public Vector3 Speed;
+    public Vector3 AngularSpeed;
+    public float RotForce; 
     public float xAngle;
     public float yAngle;
     public float zAngle;
     public float maxAngle = 80;
-    public float correctionForce = 1000f;
+    public float correctionForce = 10000f;
 
     Vector3 Force;
     Vector3 Torque;
@@ -43,53 +43,58 @@ public class SimpleHeliController : MonoBehaviour
         float zAngle = transform.eulerAngles.z;
 
         //print(_thrust);
-        print(xAngle);
+        //print(xAngle);
         //print(yAngle);
         //print(zAngle);
 
-        Speed = _body.velocity.magnitude;
+        Speed = _body.velocity;
+        AngularSpeed = _body.angularVelocity;
 
         Force = new Vector3(0, _lift, _thrust);
         Torque = new Vector3(0, _roll, 0);
         _body.AddRelativeForce(Force);
         _body.AddRelativeTorque(Torque);
 
+        // add lift force to combat gravity when flying when 1m or greater above the ground or base it off of altitue
+        // mass * gravity
+        //if (_body.Position.y > 1)
+        //{
+            _body.AddRelativeForce(0, 200 * 9.79f, 0);
+        //}
+
+        // script to set pitch and roll angles based on forward speed and angular speed instead of correction using quat
+
+        // nose up and down correction  
         if (xAngle != 0)
         {
-            if (xAngle <= 180)
+            if (xAngle <= 180 && xAngle > 0.5)
             {
-                LevelerX = new Vector3(-1 * correctionForce, 0, 0);
+                LevelerX = new Vector3(-1 * (xAngle/180) * correctionForce, 0, 0);
                 _body.AddRelativeTorque(LevelerX);
             }
-            else if (xAngle > 180)
+            else if (xAngle > 180 && xAngle < 359.5)
             {
-                LevelerX = new Vector3(correctionForce, 0, 0);
+                LevelerX = new Vector3((xAngle/180) * correctionForce, 0, 0);
                 _body.AddRelativeTorque(LevelerX);
             }
         }
 
-        // now do for z
+        // roll correciton
+        if (zAngle != 0)
+        {
+            if (zAngle <= 180 && zAngle > 0.5)
+            {
+                LevelerZ = new Vector3(0, 0, -1 * (zAngle/90) * correctionForce);
+                _body.AddRelativeTorque(LevelerZ);
+            }
+            else if (zAngle > 180 && zAngle < 359.5)
+            {
+                LevelerZ = new Vector3(0, 0, (zAngle/90) * correctionForce);
+                _body.AddRelativeTorque(LevelerZ);
+            }
+        }
 
-
-        //if (xAngle > maxAngle && xAngle < (360 - maxAngle))  // check if helicopter tilted forwards or backwards
-        //{
-        //    // if forwards
-        //    if (xAngle <= 180)
-        //    {
-        //        // push nose upward
-        //    }
-        //    // if backwards
-        //    else if (xAngle > 180)
-        //    {
-        //        // push nose downward
-        //    }
-        //    else
-        //    {
-        //        // do nothing
-        //    }
-        //    //transform.eulerAngles = new Vector3(xAngle, yAngle, zAngle);
-        //}
-
+        // apply force to rotors 
 
         //transform.Translate(_roll * Time.deltaTime, _lift * Time.deltaTime, _thrust * Time.deltaTime);
 
