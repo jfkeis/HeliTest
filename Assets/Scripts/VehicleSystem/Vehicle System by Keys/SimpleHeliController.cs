@@ -63,6 +63,7 @@ public class SimpleHeliController : MonoBehaviour
         //}
 
         // script to set pitch and roll angles based on forward speed and angular speed instead of correction using quat
+        // set to ingore speeds less than .1
 
         // nose up and down correction  
         if (xAngle != 0)

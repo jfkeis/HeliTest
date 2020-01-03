@@ -115,7 +115,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 494}
   m_MaxSize: {x: 18008, y: 14044}
   vertical: 0
-  controlID: 30
+  controlID: 121
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 444}
   m_MaxSize: {x: 4002, y: 8044}
   vertical: 1
-  controlID: 31
+  controlID: 122
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 494}
   m_MaxSize: {x: 10004, y: 14044}
   vertical: 1
-  controlID: 75
+  controlID: 34
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -320,9 +320,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 559
-    width: 866
-    height: 442
+    y: 463
+    width: 650
+    height: 349
   m_ViewDataDictionary: {fileID: 0}
 --- !u!114 &14
 MonoBehaviour:
@@ -360,9 +360,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.28701973, y: 2.6797657, z: -3.5097692}
+    m_Target: {x: -0.49196792, y: 4.9309764, z: 0.7359581}
     speed: 2
-    m_Value: {x: -0.28701973, y: 2.6797657, z: -3.5097692}
+    m_Value: {x: -0.49196792, y: 4.9309764, z: 0.7359581}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -391,13 +391,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.11122654, y: 0.726938, z: -0.121276416, w: -0.666697}
+    m_Target: {x: -0.041361567, y: 0.46710953, z: -0.021880664, w: -0.882963}
     speed: 2
-    m_Value: {x: -0.111226365, y: 0.7269369, z: -0.12127623, w: -0.666696}
+    m_Value: {x: -0.041361474, y: 0.46710846, z: -0.021880614, w: -0.882961}
   m_Size:
-    m_Target: 15.907945
+    m_Target: 19.504604
     speed: 2
-    m_Value: 15.907945
+    m_Value: 19.504604
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -559,9 +559,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: f0310000
-      m_LastClickedID: 12784
-      m_ExpandedIDs: 6afbffff
+      m_SelectedIDs: 16410000
+      m_LastClickedID: 16662
+      m_ExpandedIDs: ece3ffff6afbfffff0310000f4310000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -624,20 +624,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/VehicleSystem/Vehicle System by Keys
+    - Assets/Helicopter/Scripts
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts/VehicleSystem/Vehicle System by Keys
+  - Assets/Helicopter/Scripts
   m_LastFoldersGridSize: 16
   m_LastProjectPath: /Users/John/UnityProjects/HeliTest/HeliTest
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 04300000
-    m_LastClickedID: 12292
-    m_ExpandedIDs: 00000000c22c0000882f0000a02f000098300000c2300000
+    scrollPos: {x: 0, y: 22}
+    m_SelectedIDs: ec2d0000
+    m_LastClickedID: 11756
+    m_ExpandedIDs: 00000000c22c0000802d0000882f0000a02f000098300000c2300000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
