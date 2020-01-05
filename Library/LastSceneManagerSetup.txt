@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Helicopter/FreeRide.unity
+- path: Assets/Scenes/HeliForceTest.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

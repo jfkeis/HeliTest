@@ -16,7 +16,7 @@ public class SimpleHeliController : MonoBehaviour
     public float xAngle;
     public float yAngle;
     public float zAngle;
-    public float maxAngle = 80;
+    public float maxAngle = 30;
     public float correctionForce = 10000f;
 
     Vector3 Force;
@@ -25,6 +25,7 @@ public class SimpleHeliController : MonoBehaviour
     Vector3 LevelerY;
     Vector3 LevelerZ;
     public Vector3 CenterOfMass = new Vector3(0, -1, 0);
+
 
     // Start is called before the first frame update
     void Start()
@@ -50,50 +51,71 @@ public class SimpleHeliController : MonoBehaviour
         Speed = _body.velocity;
         AngularSpeed = _body.angularVelocity;
 
-        Force = new Vector3(0, _lift, _thrust);
-        Torque = new Vector3(0, _roll, 0);
+        //Force = new Vector3(0, _lift, _thrust);
+        //Torque = new Vector3(0, _roll, 0);
+        //_body.AddRelativeForce(Force);
+        Force = new Vector2(0, _thrust);
         _body.AddRelativeForce(Force);
+
+        Torque = new Vector3(0, _roll, 0);
         _body.AddRelativeTorque(Torque);
 
-        // add lift force to combat gravity when flying when 1m or greater above the ground or base it off of altitue
-        // mass * gravity
-        //if (_body.Position.y > 1)
-        //{
-            _body.AddRelativeForce(0, 200 * 9.79f, 0);
-        //}
+        // add lift force to combat gravity when flying when 2m or greater above the ground or base it off of realtive altitue
+        RaycastHit hit;
+        // Does the ray intersect any objects excluding the player layer
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 2))
+        {   
+            // if hit use gravity
+            _body.useGravity = true;
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * hit.distance, Color.yellow);
+        }
+        else
+        {
+            // no hit so add opposite gravity
+            //_body.AddRelativeForce(0, mass * 9.81f, 0);
+            _body.useGravity = false;
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * 1000, Color.white);
+        }
 
         // script to set pitch and roll angles based on forward speed and angular speed instead of correction using quat
         // set to ingore speeds less than .1
+        var localVelocity = transform.InverseTransformDirection(_body.velocity);
+        float forwardSpeed = localVelocity.z;
 
-        // nose up and down correction  
-        if (xAngle != 0)
-        {
-            if (xAngle <= 180 && xAngle > 0.5)
-            {
-                LevelerX = new Vector3(-1 * (xAngle/180) * correctionForce, 0, 0);
-                _body.AddRelativeTorque(LevelerX);
-            }
-            else if (xAngle > 180 && xAngle < 359.5)
-            {
-                LevelerX = new Vector3((xAngle/180) * correctionForce, 0, 0);
-                _body.AddRelativeTorque(LevelerX);
-            }
-        }
+        Vector3 localAngularVelocity = transform.InverseTransformDirection(_body.angularVelocity);
+        float turnVelocity = localAngularVelocity.y;
 
-        // roll correciton
-        if (zAngle != 0)
-        {
-            if (zAngle <= 180 && zAngle > 0.5)
-            {
-                LevelerZ = new Vector3(0, 0, -1 * (zAngle/90) * correctionForce);
-                _body.AddRelativeTorque(LevelerZ);
-            }
-            else if (zAngle > 180 && zAngle < 359.5)
-            {
-                LevelerZ = new Vector3(0, 0, (zAngle/90) * correctionForce);
-                _body.AddRelativeTorque(LevelerZ);
-            }
-        }
+        transform.eulerAngles = new Vector3(forwardSpeed, transform.eulerAngles.y, -turnVelocity * 20);
+
+        //// nose up and down correction  
+        //if (xAngle != 0)
+        //{
+        //    if (xAngle <= 180 && xAngle > 0.5)
+        //    {
+        //        LevelerX = new Vector3(-1 * (xAngle/180) * correctionForce, 0, 0);
+        //        _body.AddRelativeTorque(LevelerX);
+        //    }
+        //    else if (xAngle > 180 && xAngle < 359.5)
+        //    {
+        //        LevelerX = new Vector3((xAngle/180) * correctionForce, 0, 0);
+        //        _body.AddRelativeTorque(LevelerX);
+        //    }
+        //}
+
+        //// roll correciton
+        //if (zAngle != 0)
+        //{
+        //    if (zAngle <= 180 && zAngle > 0.5)
+        //    {
+        //        LevelerZ = new Vector3(0, 0, -1 * (zAngle/90) * correctionForce);
+        //        _body.AddRelativeTorque(LevelerZ);
+        //    }
+        //    else if (zAngle > 180 && zAngle < 359.5)
+        //    {
+        //        LevelerZ = new Vector3(0, 0, (zAngle/90) * correctionForce);
+        //        _body.AddRelativeTorque(LevelerZ);
+        //    }
+        //}
 
         // apply force to rotors 
 
