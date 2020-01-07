@@ -43,21 +43,16 @@ public class SimpleHeliController : MonoBehaviour
         float yAngle = transform.eulerAngles.y;
         float zAngle = transform.eulerAngles.z;
 
-        //print(_thrust);
-        //print(xAngle);
-        //print(yAngle);
-        //print(zAngle);
+        // break down thrust into a y and z component
+        float zThrust = Mathf.Cos(xAngle * Mathf.Deg2Rad) * _thrust;
+        float yThrust = Mathf.Sin(xAngle * Mathf.Deg2Rad) * _thrust;
 
         Speed = _body.velocity;
         AngularSpeed = _body.angularVelocity;
 
-        //Force = new Vector3(0, _lift, _thrust);
-        //Torque = new Vector3(0, _roll, 0);
-        //_body.AddRelativeForce(Force);
-        Force = new Vector2(0, _thrust);
-        _body.AddRelativeForce(Force);
-
+        Force = new Vector3(0, _lift + yThrust, zThrust);
         Torque = new Vector3(0, _roll, 0);
+        _body.AddRelativeForce(Force);
         _body.AddRelativeTorque(Torque);
 
         // add lift force to combat gravity when flying when 2m or greater above the ground or base it off of realtive altitue

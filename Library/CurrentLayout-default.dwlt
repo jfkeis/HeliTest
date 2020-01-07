@@ -112,8 +112,8 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 711, y: 472}
-  m_MaxSize: {x: 18006, y: 14022}
+  m_MinSize: {x: 713, y: 472}
+  m_MaxSize: {x: 18008, y: 14022}
   vertical: 0
   controlID: 30
 --- !u!114 &6
@@ -137,8 +137,8 @@ MonoBehaviour:
     y: 0
     width: 866
     height: 947
-  m_MinSize: {x: 202, y: 422}
-  m_MaxSize: {x: 4002, y: 8022}
+  m_MinSize: {x: 202, y: 444}
+  m_MaxSize: {x: 4002, y: 8044}
   vertical: 1
   controlID: 31
 --- !u!114 &7
@@ -160,8 +160,8 @@ MonoBehaviour:
     y: 0
     width: 866
     height: 486
-  m_MinSize: {x: 202, y: 222}
-  m_MaxSize: {x: 4002, y: 4022}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -291,8 +291,8 @@ MonoBehaviour:
     y: 0
     width: 551
     height: 947
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 277, y: 72}
+  m_MaxSize: {x: 4002, y: 4022}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -360,9 +360,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -5.4191914, y: -0.5000005, z: 9.755317}
+    m_Target: {x: -10.4544935, y: 1.7332089, z: 2.7298088}
     speed: 2
-    m_Value: {x: -5.4191914, y: -0.5000005, z: 9.755317}
+    m_Value: {x: -10.4544935, y: 1.7332089, z: 2.7298088}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -559,9 +559,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 5cf8ffff36f9ffff2e3e0000
+      m_SelectedIDs: fc310000
+      m_LastClickedID: 12796
+      m_ExpandedIDs: 76fbfffff8310000fc31000020320000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -635,9 +635,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ec340000
-    m_LastClickedID: 13548
-    m_ExpandedIDs: 00000000da3300008a340000843600009a360000763700009c37000000ca9a3b
+    m_SelectedIDs: f42d0000
+    m_LastClickedID: 11764
+    m_ExpandedIDs: 00000000c82c0000882d0000902f0000a82f0000a0300000ca30000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -665,7 +665,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000da3300008a340000843600009a360000763700009c370000
+    m_ExpandedIDs: 00000000c82c0000882d0000902f0000a82f0000a0300000ca300000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -696,18 +696,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: 288b000044f90000d4e00000f6250100f8300000584c000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: HelicopterController
-      m_OriginalName: HelicopterController
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 11126
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 11}
     m_CreateAssetUtility:
