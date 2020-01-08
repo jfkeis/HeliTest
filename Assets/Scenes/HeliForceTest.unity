@@ -219,6 +219,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -259,7 +260,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 79.2
+  field of view: 85.4
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -291,6 +292,21 @@ Transform:
   m_Father: {fileID: 1271341719}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 19.013, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b52ddb421248dac478547edfe54a4e64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1271341719}
+  smoothTime: 0.3
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!1 &1186880409
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,7 +362,6 @@ GameObject:
   - component: {fileID: 1271341713}
   - component: {fileID: 1274241715}
   - component: {fileID: 1273110643}
-  - component: {fileID: 2090666865}
   m_Layer: 0
   m_Name: Rotor_Back
   m_TagString: Untagged
@@ -365,7 +380,6 @@ GameObject:
   - component: {fileID: 1271341715}
   - component: {fileID: 1274241717}
   - component: {fileID: 1273110645}
-  - component: {fileID: 1367118518}
   m_Layer: 0
   m_Name: Rotor
   m_TagString: Untagged
@@ -383,7 +397,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1271341717}
   - component: {fileID: 1270954011}
-  - component: {fileID: 1270922934}
   m_Layer: 0
   m_Name: Heli_3
   m_TagString: Untagged
@@ -391,22 +404,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!54 &1270922934
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270922933}
-  serializedVersion: 2
-  m_Mass: 200
-  m_Drag: 2
-  m_AngularDrag: 2
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1270922935
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,6 +415,7 @@ GameObject:
   - component: {fileID: 1271341719}
   - component: {fileID: 1274241719}
   - component: {fileID: 1273110647}
+  - component: {fileID: 1270922936}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -425,6 +423,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!54 &1270922936
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270922935}
+  serializedVersion: 2
+  m_Mass: 200
+  m_Drag: 2
+  m_AngularDrag: 2
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &1270954011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,20 +451,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 063ccfa978b11f34a891e8fcb7449fae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _body: {fileID: 1270922934}
+  _body: {fileID: 1270922936}
+  _bodyTrans: {fileID: 1271341719}
+  _mainRotor: {fileID: 1271341715}
+  _tailRotor: {fileID: 1271341713}
   ForwardForce: 10000
   TurnForce: 5000
   LiftForce: 10000
   MaxSpeed: 10000
   Speed: {x: 0, y: 0, z: 0}
   AngularSpeed: {x: 0, y: 0, z: 0}
-  RotForce: 10000
+  RotForce: 25
   xAngle: 0
   yAngle: 0
   zAngle: 0
   maxAngle: 30
   correctionForce: 10000
-  CenterOfMass: {x: 0, y: -4, z: 0}
+  CenterOfMass: {x: 0, y: -1, z: 0}
 --- !u!4 &1271341713
 Transform:
   m_ObjectHideFlags: 0
@@ -650,19 +667,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270922935}
   m_Mesh: {fileID: 4300000, guid: 17d12b7570a4eff4eaaa2562f61e7fda, type: 3}
---- !u!114 &1367118518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270922931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff85a5e654edb91409b2b12a3b2fa043, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RotateAxis: 1
 --- !u!1 &1460244986
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,16 +792,3 @@ Transform:
   m_Father: {fileID: 1271341719}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2090666865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270922929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff85a5e654edb91409b2b12a3b2fa043, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RotateAxis: 0

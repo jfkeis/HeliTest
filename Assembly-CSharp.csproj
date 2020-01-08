@@ -62,21 +62,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Helicopter\Scripts\Checkpoint.cs" />
-    <Compile Include="Assets\Helicopter\Scripts\CheckpointController.cs" />
-    <Compile Include="Assets\Helicopter\Scripts\ControlPanel.cs" />
-    <Compile Include="Assets\Helicopter\Scripts\FollowTargetCamera.cs" />
-    <Compile Include="Assets\Helicopter\Scripts\HelicopterController.cs" />
-    <Compile Include="Assets\Helicopter\Scripts\HeliRotorController.cs" />
-    <Compile Include="Assets\Helicopter\Scripts\LookAtTargetController.cs" />
-    <Compile Include="Assets\Helicopter\Scripts\PressedKeyCode.cs" />
-    <Compile Include="Assets\Helicopter\Scripts\UIGameController.cs" />
-    <Compile Include="Assets\Scripts\VehicleSystem\Vehicle System by Keys\ForceApplicator.cs" />
-    <Compile Include="Assets\Scripts\VehicleSystem\Vehicle System by Keys\Helicopter.cs" />
-    <Compile Include="Assets\Scripts\VehicleSystem\Vehicle System by Keys\HelicopterControls.cs" />
-    <Compile Include="Assets\Scripts\VehicleSystem\Vehicle System by Keys\LinearForceApplicator.cs" />
-    <Compile Include="Assets\Scripts\VehicleSystem\Vehicle System by Keys\RotationalForceApplicator.cs" />
-    <Compile Include="Assets\Scripts\VehicleSystem\Vehicle System by Keys\Rotator.cs" />
     <Compile Include="Assets\Scripts\VehicleSystem\Vehicle System by Keys\SimpleHeliController.cs" />
     <None Include="Assets\Low Poly Helicopters Pack Free\Shaders\UnlitShadow.shader" />
     <Reference Include="Unity.Timeline.Editor">

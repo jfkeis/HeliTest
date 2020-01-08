@@ -6,13 +6,16 @@ public class SimpleHeliController : MonoBehaviour
 {
     [Header("Components")]
     public Rigidbody _body;
+    public Transform _bodyTrans;
+    public Transform _mainRotor;
+    public Transform _tailRotor;
     public float ForwardForce = 10000f;
     public float TurnForce = 5000f;
     public float LiftForce = 10000f;
     public float MaxSpeed = 1000f;
     public Vector3 Speed;
     public Vector3 AngularSpeed;
-    public float RotForce; 
+    public float RotForce = 1000f; 
     public float xAngle;
     public float yAngle;
     public float zAngle;
@@ -26,11 +29,8 @@ public class SimpleHeliController : MonoBehaviour
     Vector3 LevelerZ;
     public Vector3 CenterOfMass = new Vector3(0, -1, 0);
 
-
-    // Start is called before the first frame update
     void Start()
     {
-        _body = GetComponent<Rigidbody>();
         _body.centerOfMass = CenterOfMass;
     }
 
@@ -39,9 +39,9 @@ public class SimpleHeliController : MonoBehaviour
         float _thrust = Input.GetAxis("Vertical") * ForwardForce;
         float _roll = Input.GetAxis("Horizontal") * TurnForce;
         float _lift = Input.GetAxis("Fire3") * LiftForce;
-        float xAngle = transform.eulerAngles.x;
-        float yAngle = transform.eulerAngles.y;
-        float zAngle = transform.eulerAngles.z;
+        float xAngle = _bodyTrans.eulerAngles.x;
+        float yAngle = _bodyTrans.eulerAngles.y;
+        float zAngle = _bodyTrans.eulerAngles.z;
 
         // break down thrust into a y and z component
         float zThrust = Mathf.Cos(xAngle * Mathf.Deg2Rad) * _thrust;
@@ -58,29 +58,29 @@ public class SimpleHeliController : MonoBehaviour
         // add lift force to combat gravity when flying when 2m or greater above the ground or base it off of realtive altitue
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 2))
+        if (Physics.Raycast(_bodyTrans.position, _bodyTrans.TransformDirection(Vector3.down), out hit, 2))
         {   
             // if hit use gravity
             _body.useGravity = true;
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * hit.distance, Color.yellow);
+            Debug.DrawRay(_bodyTrans.position, _bodyTrans.TransformDirection(Vector3.down) * hit.distance, Color.yellow);
         }
         else
         {
             // no hit so add opposite gravity
             //_body.AddRelativeForce(0, mass * 9.81f, 0);
             _body.useGravity = false;
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * 1000, Color.white);
+            Debug.DrawRay(_bodyTrans.position, _bodyTrans.TransformDirection(Vector3.down) * 1000, Color.white);
         }
 
         // script to set pitch and roll angles based on forward speed and angular speed instead of correction using quat
         // set to ingore speeds less than .1
-        var localVelocity = transform.InverseTransformDirection(_body.velocity);
+        var localVelocity = _bodyTrans.InverseTransformDirection(_body.velocity);
         float forwardSpeed = localVelocity.z;
 
-        Vector3 localAngularVelocity = transform.InverseTransformDirection(_body.angularVelocity);
+        Vector3 localAngularVelocity = _bodyTrans.InverseTransformDirection(_body.angularVelocity);
         float turnVelocity = localAngularVelocity.y;
 
-        transform.eulerAngles = new Vector3(forwardSpeed, transform.eulerAngles.y, -turnVelocity * 20);
+        _bodyTrans.eulerAngles = new Vector3(forwardSpeed, _bodyTrans.eulerAngles.y, -turnVelocity * RotForce);
 
         //// nose up and down correction  
         //if (xAngle != 0)
@@ -97,7 +97,7 @@ public class SimpleHeliController : MonoBehaviour
         //    }
         //}
 
-        //// roll correciton
+        //// roll correction
         //if (zAngle != 0)
         //{
         //    if (zAngle <= 180 && zAngle > 0.5)
@@ -113,8 +113,8 @@ public class SimpleHeliController : MonoBehaviour
         //}
 
         // apply force to rotors 
-
-        //transform.Translate(_roll * Time.deltaTime, _lift * Time.deltaTime, _thrust * Time.deltaTime);
+        _mainRotor.Rotate(0f, RotForce, 0f);
+        _tailRotor.Rotate(RotForce, 0f, 0f);
 
     }
 

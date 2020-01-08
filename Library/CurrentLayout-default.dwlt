@@ -360,9 +360,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -10.4544935, y: 1.7332089, z: 2.7298088}
+    m_Target: {x: -0.48326588, y: 2.7921395, z: 0.132833}
     speed: 2
-    m_Value: {x: -10.4544935, y: 1.7332089, z: 2.7298088}
+    m_Value: {x: -0.48326588, y: 2.7921395, z: 0.132833}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -395,9 +395,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: -0.041361474, y: 0.46710846, z: -0.021880614, w: -0.882961}
   m_Size:
-    m_Target: 29.120445
+    m_Target: 17.026178
     speed: 2
-    m_Value: 29.120445
+    m_Value: 17.026178
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -559,9 +559,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: fc310000
-      m_LastClickedID: 12796
-      m_ExpandedIDs: 76fbfffff8310000fc31000020320000
+      m_SelectedIDs: be500000
+      m_LastClickedID: 20670
+      m_ExpandedIDs: 30b6ffff32b6ffff38b6ffff9cb8ffffd8b8ffff90b9ffff20cfffff5ccfffff16d0ffff16f4ffff4af6ffff76fbfffff8310000fc310000643400007034000014360000f4380000f83800002048000022480000be500000c0500000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -624,34 +624,34 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Helicopter/Scripts
+    - Assets/Prefabs/Vehicles
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Helicopter/Scripts
+  - Assets/Prefabs/Vehicles
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\ProjectIsland\HeliTest
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: f42d0000
-    m_LastClickedID: 11764
-    m_ExpandedIDs: 00000000c82c0000882d0000902f0000a82f0000a0300000ca30000000ca9a3b
+    m_SelectedIDs: 9e2f0000
+    m_LastClickedID: 12190
+    m_ExpandedIDs: 00000000c82c0000882d0000ea2d0000902f0000a82f0000a0300000ca30000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Prefabs
+      m_OriginalName: Prefabs
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 11754
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 11}
     m_SearchString: 
@@ -696,18 +696,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: 288b000044f90000d4e00000f6250100f8300000584c000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: GameObject Variant
+      m_OriginalName: GameObject Variant
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 21216
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 11}
     m_CreateAssetUtility:
