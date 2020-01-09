@@ -15,7 +15,7 @@ public class SimpleHeliController : MonoBehaviour
     public float MaxSpeed = 1000f;
     public Vector3 Speed;
     public Vector3 AngularSpeed;
-    public float RotForce = 1000f; 
+    public float RotForce = 25f; 
     public float xAngle;
     public float yAngle;
     public float zAngle;
@@ -58,11 +58,14 @@ public class SimpleHeliController : MonoBehaviour
         // add lift force to combat gravity when flying when 2m or greater above the ground or base it off of realtive altitue
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(_bodyTrans.position, _bodyTrans.TransformDirection(Vector3.down), out hit, 2))
+        if (Physics.Raycast(_bodyTrans.position, _bodyTrans.TransformDirection(Vector3.down), out hit, 1.8f))
         {   
             // if hit use gravity
             _body.useGravity = true;
             Debug.DrawRay(_bodyTrans.position, _bodyTrans.TransformDirection(Vector3.down) * hit.distance, Color.yellow);
+            // apply force to rotors 
+            _mainRotor.Rotate(0f, RotForce/1.5f, 0f);
+            _tailRotor.Rotate(RotForce/1.5f, 0f, 0f);
         }
         else
         {
@@ -70,6 +73,9 @@ public class SimpleHeliController : MonoBehaviour
             //_body.AddRelativeForce(0, mass * 9.81f, 0);
             _body.useGravity = false;
             Debug.DrawRay(_bodyTrans.position, _bodyTrans.TransformDirection(Vector3.down) * 1000, Color.white);
+            // apply force to rotors 
+            _mainRotor.Rotate(0f, RotForce, 0f);
+            _tailRotor.Rotate(RotForce, 0f, 0f);
         }
 
         // script to set pitch and roll angles based on forward speed and angular speed instead of correction using quat
@@ -111,10 +117,6 @@ public class SimpleHeliController : MonoBehaviour
         //        _body.AddRelativeTorque(LevelerZ);
         //    }
         //}
-
-        // apply force to rotors 
-        _mainRotor.Rotate(0f, RotForce, 0f);
-        _tailRotor.Rotate(RotForce, 0f, 0f);
 
     }
 

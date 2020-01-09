@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - FollowCamera
     - SimpleHeliController
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -31,31 +32,19 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
-    - Class: 83
-      Script: {instanceID: 0}
     - Class: 89
-      Script: {instanceID: 0}
-    - Class: 90
-      Script: {instanceID: 0}
-    - Class: 95
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 10740}
+      Script: {instanceID: 10718}
     - Class: 114
-      Script: {instanceID: 20274}
+      Script: {instanceID: 12934}
     - Class: 115
-      Script: {instanceID: 0}
-    - Class: 156
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
-    - Class: 213
-      Script: {instanceID: 0}
     - Class: 258
-      Script: {instanceID: 0}
-    - Class: 1953259897
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -88,12 +77,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_ScrollbarEventHandler
-  - hash:
-      serializedVersion: 2
-      Hash: 222a0f3cd858c36aeb54708a1c202e18
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ControlPanel
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -180,12 +163,6 @@ ScriptsOnlyBuild:
     className: PhysicsRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Checkpoint
-  - hash:
-      serializedVersion: 2
       Hash: bd3cf68c8964d3c66d1c43f4f98508c9
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -258,12 +235,6 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: d4f5996b22bf774003149f597c23e5ad
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: UIGameController
-  - hash:
-      serializedVersion: 2
       Hash: b3ab2106268377ffe25dd18ac23dca28
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -276,12 +247,6 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
-      Hash: c3a032313cd3bd446a735ad53f64c171
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: HeliRotorController
-  - hash:
-      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -292,12 +257,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SpriteAnimator
-  - hash:
-      serializedVersion: 2
-      Hash: 5ef04bde756131ef604201d32fca4a09
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: CheckpointController
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -396,12 +355,6 @@ ScriptsOnlyBuild:
     className: AudioTrack
   - hash:
       serializedVersion: 2
-      Hash: 56417ba95eb94d0e6c8d9a2970fa0f63
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: LookAtTargetController
-  - hash:
-      serializedVersion: 2
       Hash: ae83e830e7a90c0aff918c4c2e520825
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -412,12 +365,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools
     className: BeforeAfterTestCommandState
-  - hash:
-      serializedVersion: 2
-      Hash: 07cd5cd1f2853ad621860be648bca79d
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: HelicopterController
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -460,12 +407,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Outline
-  - hash:
-      serializedVersion: 2
-      Hash: 6041b9d2a6e9d7d2faa3990df99bcc48
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: FollowTargetCamera
   - hash:
       serializedVersion: 2
       Hash: a63fc1a3b035e5a0b5839cd7f7b3086e
@@ -526,6 +467,18 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 245b339d4ba41202ebe1b43b3e170bfe
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SmoothFollow2
+  - hash:
+      serializedVersion: 2
+      Hash: 087cdcf0b532160f9e15df9ab0e1cb37
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FollowCamera
   platform: 5
   scenePathNames:
   - Assets/Scenes/HeliForceTest.unity

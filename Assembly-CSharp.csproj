@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\VehicleSystem\Vehicle System by Keys\FollowCamera.cs" />
     <Compile Include="Assets\Scripts\VehicleSystem\Vehicle System by Keys\SimpleHeliController.cs" />
     <None Include="Assets\Low Poly Helicopters Pack Free\Shaders\UnlitShadow.shader" />
     <Reference Include="Unity.Timeline.Editor">
