@@ -396,6 +396,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1271341717}
   - component: {fileID: 1270954011}
+  - component: {fileID: 1270922934}
   m_Layer: 0
   m_Name: Heli_3
   m_TagString: Untagged
@@ -403,6 +404,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!54 &1270922934
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270922933}
+  serializedVersion: 2
+  m_Mass: 200
+  m_Drag: 2
+  m_AngularDrag: 2
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1270922935
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,7 +431,6 @@ GameObject:
   - component: {fileID: 1271341719}
   - component: {fileID: 1274241719}
   - component: {fileID: 1273110647}
-  - component: {fileID: 1270922936}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -422,22 +438,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!54 &1270922936
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270922935}
-  serializedVersion: 2
-  m_Mass: 200
-  m_Drag: 2
-  m_AngularDrag: 2
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1270954011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -450,8 +450,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 063ccfa978b11f34a891e8fcb7449fae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _body: {fileID: 1270922936}
-  _bodyTrans: {fileID: 1271341719}
+  rb: {fileID: 1270922934}
+  _bodyTrans: {fileID: 1271341717}
   _mainRotor: {fileID: 1271341715}
   _tailRotor: {fileID: 1271341713}
   ForwardForce: 10000
@@ -466,7 +466,6 @@ MonoBehaviour:
   zAngle: 0
   maxAngle: 30
   correctionForce: 10000
-  CenterOfMass: {x: 0, y: -1, z: 0}
 --- !u!4 &1271341713
 Transform:
   m_ObjectHideFlags: 0

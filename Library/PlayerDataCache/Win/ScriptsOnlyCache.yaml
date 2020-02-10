@@ -37,9 +37,9 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 10718}
+      Script: {instanceID: 10182}
     - Class: 114
-      Script: {instanceID: 12934}
+      Script: {instanceID: 10720}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -205,6 +205,12 @@ ScriptsOnlyBuild:
     className: Shadow
   - hash:
       serializedVersion: 2
+      Hash: 087cdcf0b532160f9e15df9ab0e1cb37
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FollowCamera
+  - hash:
+      serializedVersion: 2
       Hash: cc4274b586df3c02688bac01b88bd16c
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
@@ -289,7 +295,7 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: dbc8df5ccc03a1bc4e6d759edab0d693
+      Hash: 80b7e02b62e579b293296b2851a12302
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SimpleHeliController
@@ -467,18 +473,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 245b339d4ba41202ebe1b43b3e170bfe
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: SmoothFollow2
-  - hash:
-      serializedVersion: 2
-      Hash: 087cdcf0b532160f9e15df9ab0e1cb37
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: FollowCamera
   platform: 5
   scenePathNames:
   - Assets/Scenes/HeliForceTest.unity

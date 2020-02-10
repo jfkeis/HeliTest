@@ -5,7 +5,7 @@ using UnityEngine;
 public class SimpleHeliController : MonoBehaviour
 {
     [Header("Components")]
-    public Rigidbody _body;
+    public Rigidbody rb;
     public Transform _bodyTrans;
     public Transform _mainRotor;
     public Transform _tailRotor;
@@ -27,11 +27,10 @@ public class SimpleHeliController : MonoBehaviour
     Vector3 LevelerX;
     Vector3 LevelerY;
     Vector3 LevelerZ;
-    public Vector3 CenterOfMass = new Vector3(0, -1, 0);
 
     void Start()
     {
-        _body.centerOfMass = CenterOfMass;
+        rb = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()
@@ -47,13 +46,13 @@ public class SimpleHeliController : MonoBehaviour
         float zThrust = Mathf.Cos(xAngle * Mathf.Deg2Rad) * _thrust;
         float yThrust = Mathf.Sin(xAngle * Mathf.Deg2Rad) * _thrust;
 
-        Speed = _body.velocity;
-        AngularSpeed = _body.angularVelocity;
+        Speed = rb.velocity;
+        AngularSpeed = rb.angularVelocity;
 
         Force = new Vector3(0, _lift + yThrust, zThrust);
         Torque = new Vector3(0, _roll, 0);
-        _body.AddRelativeForce(Force);
-        _body.AddRelativeTorque(Torque);
+        rb.AddRelativeForce(Force);
+        rb.AddRelativeTorque(Torque);
 
         // add lift force to combat gravity when flying when 2m or greater above the ground or base it off of realtive altitue
         RaycastHit hit;
@@ -61,7 +60,7 @@ public class SimpleHeliController : MonoBehaviour
         if (Physics.Raycast(_bodyTrans.position, _bodyTrans.TransformDirection(Vector3.down), out hit, 1.8f))
         {   
             // if hit use gravity
-            _body.useGravity = true;
+            rb.useGravity = true;
             Debug.DrawRay(_bodyTrans.position, _bodyTrans.TransformDirection(Vector3.down) * hit.distance, Color.yellow);
             // apply force to rotors 
             _mainRotor.Rotate(0f, RotForce/1.5f, 0f);
@@ -71,7 +70,7 @@ public class SimpleHeliController : MonoBehaviour
         {
             // no hit so add opposite gravity
             //_body.AddRelativeForce(0, mass * 9.81f, 0);
-            _body.useGravity = false;
+            rb.useGravity = false;
             Debug.DrawRay(_bodyTrans.position, _bodyTrans.TransformDirection(Vector3.down) * 1000, Color.white);
             // apply force to rotors 
             _mainRotor.Rotate(0f, RotForce, 0f);
@@ -80,10 +79,10 @@ public class SimpleHeliController : MonoBehaviour
 
         // script to set pitch and roll angles based on forward speed and angular speed instead of correction using quat
         // set to ingore speeds less than .1
-        var localVelocity = _bodyTrans.InverseTransformDirection(_body.velocity);
+        var localVelocity = _bodyTrans.InverseTransformDirection(rb.velocity);
         float forwardSpeed = localVelocity.z;
 
-        Vector3 localAngularVelocity = _bodyTrans.InverseTransformDirection(_body.angularVelocity);
+        Vector3 localAngularVelocity = _bodyTrans.InverseTransformDirection(rb.angularVelocity);
         float turnVelocity = localAngularVelocity.y;
 
         _bodyTrans.eulerAngles = new Vector3(forwardSpeed, _bodyTrans.eulerAngles.y, -turnVelocity * RotForce);
