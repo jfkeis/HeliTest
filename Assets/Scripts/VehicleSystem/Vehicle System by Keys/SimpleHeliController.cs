@@ -12,21 +12,21 @@ public class SimpleHeliController : MonoBehaviour
     public float ForwardForce = 10000f;
     public float TurnForce = 5000f;
     public float LiftForce = 10000f;
-    public float MaxSpeed = 1000f;
     public Vector3 Speed;
     public Vector3 AngularSpeed;
-    public float RotForce = 25f; 
+    private float RotForce;
     public float xAngle;
     public float yAngle;
     public float zAngle;
     public float maxAngle = 30;
     public float correctionForce = 10000f;
+    private float maxRotForce = 25f;
 
     Vector3 Force;
     Vector3 Torque;
-    Vector3 LevelerX;
-    Vector3 LevelerY;
-    Vector3 LevelerZ;
+    //Vector3 LevelerX;
+    //Vector3 LevelerY;
+    //Vector3 LevelerZ;
 
     void Start()
     {
@@ -49,23 +49,35 @@ public class SimpleHeliController : MonoBehaviour
         Speed = rb.velocity;
         AngularSpeed = rb.angularVelocity;
 
-        Force = new Vector3(0, _lift + yThrust, zThrust);
-        Torque = new Vector3(0, _roll, 0);
-        rb.AddRelativeForce(Force);
-        rb.AddRelativeTorque(Torque);
-
-        // add lift force to combat gravity when flying when 2m or greater above the ground or base it off of realtive altitue
-        RaycastHit hit;
+        // add lift force to combat gravity when flying when 2m or greater above the ground or base it off of realtive altitude
         // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(_bodyTrans.position, _bodyTrans.TransformDirection(Vector3.down), out hit, 1.8f))
+        if (Physics.Raycast(_bodyTrans.position, _bodyTrans.TransformDirection(Vector3.down), out RaycastHit hit, 1.6f))
         {   
             // if hit use gravity
             rb.useGravity = true;
             Debug.DrawRay(_bodyTrans.position, _bodyTrans.TransformDirection(Vector3.down) * hit.distance, Color.yellow);
             // apply force to rotors 
-            _mainRotor.Rotate(0f, RotForce/1.5f, 0f);
-            _tailRotor.Rotate(RotForce/1.5f, 0f, 0f);
+            _mainRotor.Rotate(0f, Mathf.Clamp(RotForce + Input.GetAxis("Fire3") * maxRotForce, maxRotForce / 2, maxRotForce), 0f);
+            _tailRotor.Rotate(Mathf.Clamp(RotForce + Input.GetAxis("Fire3") * maxRotForce, maxRotForce / 2, maxRotForce), 0f, 0f);
+
+            // disable additional forces when on the ground
+            _roll = 0;
+            yThrust = 0;
+            zThrust = 0;
         }
+        //else if (Physics.Raycast(_bodyTrans.position, _bodyTrans.TransformDirection(Vector3.down), out RaycastHit hit2, 2.6f))
+        //{
+        //    rb.useGravity = false;
+        //    Debug.DrawRay(_bodyTrans.position, _bodyTrans.TransformDirection(Vector3.down) * hit2.distance, Color.cyan);
+        //    // apply force to rotors 
+        //    _mainRotor.Rotate(0f, maxRotForce, 0f);
+        //    _tailRotor.Rotate(maxRotForce, 0f, 0f);
+
+        //    // reduce additional forces when close to the ground
+        //    _roll = _roll/2;
+        //    yThrust = yThrust/2;
+        //    zThrust = zThrust/2;
+        //}
         else
         {
             // no hit so add opposite gravity
@@ -73,9 +85,14 @@ public class SimpleHeliController : MonoBehaviour
             rb.useGravity = false;
             Debug.DrawRay(_bodyTrans.position, _bodyTrans.TransformDirection(Vector3.down) * 1000, Color.white);
             // apply force to rotors 
-            _mainRotor.Rotate(0f, RotForce, 0f);
-            _tailRotor.Rotate(RotForce, 0f, 0f);
+            _mainRotor.Rotate(0f, maxRotForce, 0f);
+            _tailRotor.Rotate(maxRotForce, 0f, 0f);
         }
+
+        Force = new Vector3(0, _lift + yThrust, zThrust);
+        Torque = new Vector3(0, _roll, 0);
+        rb.AddRelativeForce(Force);
+        rb.AddRelativeTorque(Torque);
 
         // script to set pitch and roll angles based on forward speed and angular speed instead of correction using quat
         // set to ingore speeds less than .1
@@ -85,7 +102,7 @@ public class SimpleHeliController : MonoBehaviour
         Vector3 localAngularVelocity = _bodyTrans.InverseTransformDirection(rb.angularVelocity);
         float turnVelocity = localAngularVelocity.y;
 
-        _bodyTrans.eulerAngles = new Vector3(forwardSpeed, _bodyTrans.eulerAngles.y, -turnVelocity * RotForce);
+        _bodyTrans.eulerAngles = new Vector3(forwardSpeed, _bodyTrans.eulerAngles.y, -turnVelocity * maxRotForce);
 
         //// nose up and down correction  
         //if (xAngle != 0)
